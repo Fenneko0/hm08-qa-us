@@ -9,6 +9,7 @@ module.exports = {
     phoneNumberButton: '//div[starts-with(text(), "Phone number")]',
     nextButton: 'button=Next',
     confirmButton: 'button=Confirm',
+    supportiveTaxiButton: '//div[starts-with(text(), "Supportive")]',
     // Modals
     phoneNumberModal: '.modal',
     // Functions
