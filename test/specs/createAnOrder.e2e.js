@@ -28,4 +28,22 @@ describe("Create an order", () => {
     const parentOfSuportiveTaxiButton = await supportiveTaxiButton.$("..");
     await expect(parentOfSuportiveTaxiButton).toHaveElementClass("active");
   });
+  it('should add credit card via "Adding a card" modal', async () => {
+    await browser.url(`/`);
+    await page.fillAddresses("East 2nd Street, 601", "1300 1st St");
+    const paymentMethodButton = await $(page.paymentMethodButton);
+    await paymentMethodButton.waitForDisplayed();
+    await paymentMethodButton.click();
+    const paymentMethodModal = await $(page.paymentMethodModal);
+    await expect(paymentMethodModal).toBeExisting();
+    // Within 'Payment method' modal
+    const addCardButton = await $(page.addCardButton);
+    await addCardButton.waitForDisplayed();
+    await addCardButton.click();
+    // Within 'Adding a card' modal
+    const addingACardModal = await $(page.addingACardModal);
+    await expect(addingACardModal).toBeExisting();
+    const cardNumber = helper.getCreditCardCode();
+    await page.fillCardNumber("123400004321");
+  });
 });
