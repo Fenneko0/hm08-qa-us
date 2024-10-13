@@ -10,12 +10,19 @@ module.exports = {
   phoneNumberButton: '//div[starts-with(text(), "Phone number")]',
   nextButton: "button=Next",
   confirmButton: "button=Confirm",
+
   supportiveTaxiButton: '//div[starts-with(text(), "Supportive")]',
+
   paymentMethodButton: ".pp-text",
   addCardButton: "div=Add card",
   linkButton: '//button[starts-with(text(), "Link")]',
   codeCVCCard: "#code.card-input",
   randomDivBlock: "div.pp-buttons",
+
+  commentForTheDriver: '#comment',
+
+  blanketsCheckbox: '//div[@class="r-sw"]',
+  activeBlanketsCheckbox: '.switch-input',
   // Modals
   phoneNumberModal: ".modal",
   paymentMethodModal: ".modal",
@@ -60,11 +67,8 @@ module.exports = {
   fillCardNumber: async function (cardNumber) {
     const cardNumberField = await $(this.cardNumberField);
     await cardNumberField.setValue(cardNumber);
-    // const codeField = await $(this.codeField);
-    // await codeField.setValue(codeField);
     const codeOfCard = await $(this.codeCVCCard);
     await codeOfCard.setValue(123);
-    // await codeOfCard.setValue(['TAB']);
     const aRandomDivBlock = await $(this.randomDivBlock);
     await aRandomDivBlock.click();
     const linkButton = await $(this.linkButton);
