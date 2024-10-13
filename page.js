@@ -26,10 +26,13 @@ module.exports = {
 
   addIceCream: '//div[@class="counter-plus"]',
   addedIceCream: '//div[@class="counter-value"]',
+
+  orderTaxiButton: '.smart-button',
   // Modals
   phoneNumberModal: ".modal",
   paymentMethodModal: ".modal",
   addingACardModal: ".modal",
+  carSearchModal: '.modal',
   // Functions
   fillAddresses: async function (from, to) {
     const fromField = await $(this.fromField);

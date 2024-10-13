@@ -76,6 +76,21 @@ describe("Create an order", () => {
     await addIceCream.click();
     await addIceCream.click();
     const addedIceCream = await $(page.addedIceCream);
-    await expect(addedIceCream).toHaveText('2');
+    await expect(addedIceCream).toHaveText("2");
+  });
+  it("should check that car search modal appears", async () => {
+    await browser.url(`/`);
+    await page.fillAddresses("East 2nd Street, 601", "1300 1st St");
+    const supportiveTaxiButton = await $(page.supportiveTaxiButton);
+    await supportiveTaxiButton.waitForDisplayed();
+    await supportiveTaxiButton.click();
+    const phoneNumber = helper.getPhoneNumber("+1");
+    await page.submitPhoneNumber(phoneNumber);
+    const orderTaxiButton = await $(page.orderTaxiButton);
+    await orderTaxiButton.waitForDisplayed();
+    await orderTaxiButton.scrollIntoView();
+    await orderTaxiButton.click()
+    const carSearchModal = await $(page.carSearchModal);
+    await expect(carSearchModal).toBeExisting();
   });
 });
