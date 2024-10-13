@@ -23,6 +23,9 @@ module.exports = {
 
   blanketsCheckbox: '//div[@class="r-sw"]',
   activeBlanketsCheckbox: '.switch-input',
+
+  addIceCream: '//div[@class="counter-plus"]',
+  addedIceCream: '//div[@class="counter-value"]',
   // Modals
   phoneNumberModal: ".modal",
   paymentMethodModal: ".modal",

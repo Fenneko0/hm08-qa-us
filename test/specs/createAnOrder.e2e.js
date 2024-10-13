@@ -65,4 +65,17 @@ describe("Create an order", () => {
     const activeBlanketsCheckbox = $(page.activeBlanketsCheckbox);
     await expect(activeBlanketsCheckbox).toBeChecked();
   });
+  it("should order 2 2ce creams", async () => {
+    await browser.url(`/`);
+    await page.fillAddresses("East 2nd Street, 601", "1300 1st St");
+    const supportiveTaxiButton = await $(page.supportiveTaxiButton);
+    await supportiveTaxiButton.waitForDisplayed();
+    await supportiveTaxiButton.click();
+    const addIceCream = await $(page.addIceCream);
+    await addIceCream.waitForDisplayed();
+    await addIceCream.click();
+    await addIceCream.click();
+    const addedIceCream = await $(page.addedIceCream);
+    await expect(addedIceCream).toHaveText('2');
+  });
 });
